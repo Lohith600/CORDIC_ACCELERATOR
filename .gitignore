@@ -31,6 +31,10 @@ xsim.dir/
 # Local tool config, not part of the project deliverable
 .claude/
 
+# Personal planning/notes docs, not part of the public deliverable
+project.md
+synth/results.md
+
 # OS/editor cruft
 .DS_Store
 Thumbs.db
