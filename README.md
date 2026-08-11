@@ -79,7 +79,7 @@ registered partial sums, then a registered mode-correction mux).
 - **Word length:** 16-bit fixed-point. Angle (`z`) is Q3.13, x/y is Q2.14 —
   enough integer bits for ±π and the small gain-related headroom on x/y,
   while keeping area small.
-- **Iterations (N):** 14, verified to be the limit for the Q3.13 representation, for N>14 this it can't represent the angle.
+- **Iterations (N):** 14. For the default Q3.13 angle representation, 14 iterations provide the useful precision limit; additional iterations do not improve the represented angle because the remaining atan increments fall below the available fixed-point resolution.
 - **Parameterized:** `cordic_top #(parameter WIDTH=16, parameter N=14)`,
   threaded through the whole module hierarchy. `N` can be reduced freely
   (functionally verified down to `N=8`); increasing it needs the arctan
