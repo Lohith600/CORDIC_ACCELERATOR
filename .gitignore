@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.pyc
+
+# Icarus Verilog simulation artifacts (regenerate via iverilog/vvp, see README)
+*.vvp
+*.vcd
+sim/sweep_in.txt
+sim/sweep_out.txt
+
+# Vivado-generated build products (regenerate via synth/resynth.tcl +
+# synth/extract_reports.tcl; project .xpr files and constrs_1/*.xdc are
+# kept since they're small and are the actual synthesis source config)
+.Xil/
+*.cache/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+*.srcs/**/imports/
+*.dcp
+*.jou
+*.log
+*.pb
+*.wdf
+webtalk*
+usage_statistics_webtalk.html
+usage_statistics_webtalk.xml
+xsim.dir/
+
+# Local tool config, not part of the project deliverable
+.claude/
+
+# OS/editor cruft
+.DS_Store
+Thumbs.db

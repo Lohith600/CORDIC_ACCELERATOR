@@ -1,0 +1,663 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
+| Date         : Wed Aug 12 02:17:20 2026
+| Host         : lohithprapoorna running 64-bit major release  (build 9200)
+| Command      : report_timing -delay_type max -sort_by slack -max_paths 10 -path_type full -file synth/reports/pipelined_worst_paths.rpt
+| Design       : cordic_top
+| Device       : 7a35t-cpg236
+| Speed File   : -1  PRODUCTION 1.23 2018-06-13
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (MET) :             3.323ns  (required time - arrival time)
+  Source:                 stage[13].ci/y_reg[15]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            x_scaled_b_r_reg[22]/D
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        6.573ns  (logic 2.953ns (44.926%)  route 3.620ns (55.074%))
+  Logic Levels:           9  (CARRY4=6 LUT5=2 LUT6=1)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.079ns = ( 12.079 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.402ns
+    Clock Pessimism Removal (CPR):    0.178ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         propagated clock network latency
+                                                      2.402     2.402    
+                         FDRE                         0.000     2.402 r  stage[13].ci/y_reg[15]/C
+                         FDRE (Prop_fdre_C_Q)         0.478     2.880 r  stage[13].ci/y_reg[15]/Q
+                         net (fo=50, unplaced)        0.823     3.703    stage[13].ci/cs/z_n_r_reg[15][15]
+                         LUT5 (Prop_lut5_I2_O)        0.295     3.998 r  stage[13].ci/cs/x_next0_carry__15_i_5/O
+                         net (fo=1, unplaced)         0.665     4.663    stage[13].ci_n_100
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.637     5.300 r  cs/x_next0_carry__15/CO[3]
+                         net (fo=1, unplaced)         0.009     5.309    cs/x_next0_carry__15_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.426 r  cs/x_next0_carry__0__12/CO[3]
+                         net (fo=1, unplaced)         0.000     5.426    cs/x_next0_carry__0__12_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256     5.682 r  cs/x_next0_carry__1__12/O[2]
+                         net (fo=29, unplaced)        1.183     6.865    stage[13].ci/x_scaled_b_r_reg[17][1]
+                         LUT6 (Prop_lut6_I3_O)        0.301     7.166 r  stage[13].ci/x_scaled_b_r[21]_i_9/O
+                         net (fo=3, unplaced)         0.467     7.633    stage[13].ci/x_scaled_b_r[21]_i_9_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124     7.757 r  stage[13].ci/x_scaled_b_r[17]_i_2/O
+                         net (fo=1, unplaced)         0.473     8.230    stage[13].ci/x_scaled_b_r[17]_i_2_n_0
+                         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.396     8.626 r  stage[13].ci/x_scaled_b_r_reg[17]_i_1/CO[3]
+                         net (fo=1, unplaced)         0.000     8.626    stage[13].ci/x_scaled_b_r_reg[17]_i_1_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     8.743 r  stage[13].ci/x_scaled_b_r_reg[21]_i_1/CO[3]
+                         net (fo=1, unplaced)         0.000     8.743    stage[13].ci/x_scaled_b_r_reg[21]_i_1_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.232     8.975 r  stage[13].ci/x_scaled_b_r_reg[22]_i_1/O[0]
+                         net (fo=1, unplaced)         0.000     8.975    x_scaled_b[22]
+                         FDRE                                         r  x_scaled_b_r_reg[22]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  
+                         propagated clock network latency
+                                                      2.079    12.079    
+                         clock pessimism              0.178    12.257    
+                         clock uncertainty           -0.035    12.222    
+                         FDRE (Setup_fdre_C_D)        0.076    12.298    x_scaled_b_r_reg[22]
+  -------------------------------------------------------------------
+                         required time                         12.298    
+                         arrival time                          -8.975    
+  -------------------------------------------------------------------
+                         slack                                  3.323    
+
+Slack (MET) :             3.323ns  (required time - arrival time)
+  Source:                 stage[13].ci/y_reg[15]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            y_scaled_b_r_reg[22]/D
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        6.573ns  (logic 2.953ns (44.926%)  route 3.620ns (55.074%))
+  Logic Levels:           9  (CARRY4=6 LUT5=2 LUT6=1)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.079ns = ( 12.079 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.402ns
+    Clock Pessimism Removal (CPR):    0.178ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         propagated clock network latency
+                                                      2.402     2.402    
+                         FDRE                         0.000     2.402 r  stage[13].ci/y_reg[15]/C
+                         FDRE (Prop_fdre_C_Q)         0.478     2.880 r  stage[13].ci/y_reg[15]/Q
+                         net (fo=50, unplaced)        0.823     3.703    stage[13].ci/cs/z_n_r_reg[15][15]
+                         LUT5 (Prop_lut5_I2_O)        0.295     3.998 r  stage[13].ci/cs/y_next0_carry__15_i_5/O
+                         net (fo=1, unplaced)         0.665     4.663    stage[13].ci_n_112
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.637     5.300 r  cs/y_next0_carry__15/CO[3]
+                         net (fo=1, unplaced)         0.009     5.309    cs/y_next0_carry__15_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.426 r  cs/y_next0_carry__0__12/CO[3]
+                         net (fo=1, unplaced)         0.000     5.426    cs/y_next0_carry__0__12_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256     5.682 r  cs/y_next0_carry__1__12/O[2]
+                         net (fo=29, unplaced)        1.183     6.865    stage[13].ci/y_scaled_b_r_reg[17][1]
+                         LUT6 (Prop_lut6_I3_O)        0.301     7.166 r  stage[13].ci/y_scaled_b_r[21]_i_9/O
+                         net (fo=3, unplaced)         0.467     7.633    stage[13].ci/y_scaled_b_r[21]_i_9_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124     7.757 r  stage[13].ci/y_scaled_b_r[17]_i_2/O
+                         net (fo=1, unplaced)         0.473     8.230    stage[13].ci/y_scaled_b_r[17]_i_2_n_0
+                         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.396     8.626 r  stage[13].ci/y_scaled_b_r_reg[17]_i_1/CO[3]
+                         net (fo=1, unplaced)         0.000     8.626    stage[13].ci/y_scaled_b_r_reg[17]_i_1_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     8.743 r  stage[13].ci/y_scaled_b_r_reg[21]_i_1/CO[3]
+                         net (fo=1, unplaced)         0.000     8.743    stage[13].ci/y_scaled_b_r_reg[21]_i_1_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.232     8.975 r  stage[13].ci/y_scaled_b_r_reg[22]_i_1/O[0]
+                         net (fo=1, unplaced)         0.000     8.975    y_scaled_b[22]
+                         FDRE                                         r  y_scaled_b_r_reg[22]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  
+                         propagated clock network latency
+                                                      2.079    12.079    
+                         clock pessimism              0.178    12.257    
+                         clock uncertainty           -0.035    12.222    
+                         FDRE (Setup_fdre_C_D)        0.076    12.298    y_scaled_b_r_reg[22]
+  -------------------------------------------------------------------
+                         required time                         12.298    
+                         arrival time                          -8.975    
+  -------------------------------------------------------------------
+                         slack                                  3.323    
+
+Slack (MET) :             3.335ns  (required time - arrival time)
+  Source:                 stage[13].ci/y_reg[15]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            x_scaled_b_r_reg[19]/D
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        6.561ns  (logic 2.941ns (44.825%)  route 3.620ns (55.175%))
+  Logic Levels:           8  (CARRY4=5 LUT5=2 LUT6=1)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.079ns = ( 12.079 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.402ns
+    Clock Pessimism Removal (CPR):    0.178ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         propagated clock network latency
+                                                      2.402     2.402    
+                         FDRE                         0.000     2.402 r  stage[13].ci/y_reg[15]/C
+                         FDRE (Prop_fdre_C_Q)         0.478     2.880 r  stage[13].ci/y_reg[15]/Q
+                         net (fo=50, unplaced)        0.823     3.703    stage[13].ci/cs/z_n_r_reg[15][15]
+                         LUT5 (Prop_lut5_I2_O)        0.295     3.998 r  stage[13].ci/cs/x_next0_carry__15_i_5/O
+                         net (fo=1, unplaced)         0.665     4.663    stage[13].ci_n_100
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.637     5.300 r  cs/x_next0_carry__15/CO[3]
+                         net (fo=1, unplaced)         0.009     5.309    cs/x_next0_carry__15_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.426 r  cs/x_next0_carry__0__12/CO[3]
+                         net (fo=1, unplaced)         0.000     5.426    cs/x_next0_carry__0__12_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256     5.682 r  cs/x_next0_carry__1__12/O[2]
+                         net (fo=29, unplaced)        1.183     6.865    stage[13].ci/x_scaled_b_r_reg[17][1]
+                         LUT6 (Prop_lut6_I3_O)        0.301     7.166 r  stage[13].ci/x_scaled_b_r[21]_i_9/O
+                         net (fo=3, unplaced)         0.467     7.633    stage[13].ci/x_scaled_b_r[21]_i_9_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124     7.757 r  stage[13].ci/x_scaled_b_r[17]_i_2/O
+                         net (fo=1, unplaced)         0.473     8.230    stage[13].ci/x_scaled_b_r[17]_i_2_n_0
+                         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.396     8.626 r  stage[13].ci/x_scaled_b_r_reg[17]_i_1/CO[3]
+                         net (fo=1, unplaced)         0.000     8.626    stage[13].ci/x_scaled_b_r_reg[17]_i_1_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337     8.963 r  stage[13].ci/x_scaled_b_r_reg[21]_i_1/O[1]
+                         net (fo=1, unplaced)         0.000     8.963    x_scaled_b[19]
+                         FDRE                                         r  x_scaled_b_r_reg[19]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  
+                         propagated clock network latency
+                                                      2.079    12.079    
+                         clock pessimism              0.178    12.257    
+                         clock uncertainty           -0.035    12.222    
+                         FDRE (Setup_fdre_C_D)        0.076    12.298    x_scaled_b_r_reg[19]
+  -------------------------------------------------------------------
+                         required time                         12.298    
+                         arrival time                          -8.963    
+  -------------------------------------------------------------------
+                         slack                                  3.335    
+
+Slack (MET) :             3.335ns  (required time - arrival time)
+  Source:                 stage[13].ci/y_reg[15]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            y_scaled_b_r_reg[19]/D
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        6.561ns  (logic 2.941ns (44.825%)  route 3.620ns (55.175%))
+  Logic Levels:           8  (CARRY4=5 LUT5=2 LUT6=1)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.079ns = ( 12.079 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.402ns
+    Clock Pessimism Removal (CPR):    0.178ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         propagated clock network latency
+                                                      2.402     2.402    
+                         FDRE                         0.000     2.402 r  stage[13].ci/y_reg[15]/C
+                         FDRE (Prop_fdre_C_Q)         0.478     2.880 r  stage[13].ci/y_reg[15]/Q
+                         net (fo=50, unplaced)        0.823     3.703    stage[13].ci/cs/z_n_r_reg[15][15]
+                         LUT5 (Prop_lut5_I2_O)        0.295     3.998 r  stage[13].ci/cs/y_next0_carry__15_i_5/O
+                         net (fo=1, unplaced)         0.665     4.663    stage[13].ci_n_112
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.637     5.300 r  cs/y_next0_carry__15/CO[3]
+                         net (fo=1, unplaced)         0.009     5.309    cs/y_next0_carry__15_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.426 r  cs/y_next0_carry__0__12/CO[3]
+                         net (fo=1, unplaced)         0.000     5.426    cs/y_next0_carry__0__12_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256     5.682 r  cs/y_next0_carry__1__12/O[2]
+                         net (fo=29, unplaced)        1.183     6.865    stage[13].ci/y_scaled_b_r_reg[17][1]
+                         LUT6 (Prop_lut6_I3_O)        0.301     7.166 r  stage[13].ci/y_scaled_b_r[21]_i_9/O
+                         net (fo=3, unplaced)         0.467     7.633    stage[13].ci/y_scaled_b_r[21]_i_9_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124     7.757 r  stage[13].ci/y_scaled_b_r[17]_i_2/O
+                         net (fo=1, unplaced)         0.473     8.230    stage[13].ci/y_scaled_b_r[17]_i_2_n_0
+                         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.396     8.626 r  stage[13].ci/y_scaled_b_r_reg[17]_i_1/CO[3]
+                         net (fo=1, unplaced)         0.000     8.626    stage[13].ci/y_scaled_b_r_reg[17]_i_1_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337     8.963 r  stage[13].ci/y_scaled_b_r_reg[21]_i_1/O[1]
+                         net (fo=1, unplaced)         0.000     8.963    y_scaled_b[19]
+                         FDRE                                         r  y_scaled_b_r_reg[19]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  
+                         propagated clock network latency
+                                                      2.079    12.079    
+                         clock pessimism              0.178    12.257    
+                         clock uncertainty           -0.035    12.222    
+                         FDRE (Setup_fdre_C_D)        0.076    12.298    y_scaled_b_r_reg[19]
+  -------------------------------------------------------------------
+                         required time                         12.298    
+                         arrival time                          -8.963    
+  -------------------------------------------------------------------
+                         slack                                  3.335    
+
+Slack (MET) :             3.341ns  (required time - arrival time)
+  Source:                 stage[13].ci/y_reg[15]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            x_scaled_b_r_reg[21]/D
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        6.555ns  (logic 2.935ns (44.775%)  route 3.620ns (55.225%))
+  Logic Levels:           8  (CARRY4=5 LUT5=2 LUT6=1)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.079ns = ( 12.079 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.402ns
+    Clock Pessimism Removal (CPR):    0.178ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         propagated clock network latency
+                                                      2.402     2.402    
+                         FDRE                         0.000     2.402 r  stage[13].ci/y_reg[15]/C
+                         FDRE (Prop_fdre_C_Q)         0.478     2.880 r  stage[13].ci/y_reg[15]/Q
+                         net (fo=50, unplaced)        0.823     3.703    stage[13].ci/cs/z_n_r_reg[15][15]
+                         LUT5 (Prop_lut5_I2_O)        0.295     3.998 r  stage[13].ci/cs/x_next0_carry__15_i_5/O
+                         net (fo=1, unplaced)         0.665     4.663    stage[13].ci_n_100
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.637     5.300 r  cs/x_next0_carry__15/CO[3]
+                         net (fo=1, unplaced)         0.009     5.309    cs/x_next0_carry__15_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.426 r  cs/x_next0_carry__0__12/CO[3]
+                         net (fo=1, unplaced)         0.000     5.426    cs/x_next0_carry__0__12_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256     5.682 r  cs/x_next0_carry__1__12/O[2]
+                         net (fo=29, unplaced)        1.183     6.865    stage[13].ci/x_scaled_b_r_reg[17][1]
+                         LUT6 (Prop_lut6_I3_O)        0.301     7.166 r  stage[13].ci/x_scaled_b_r[21]_i_9/O
+                         net (fo=3, unplaced)         0.467     7.633    stage[13].ci/x_scaled_b_r[21]_i_9_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124     7.757 r  stage[13].ci/x_scaled_b_r[17]_i_2/O
+                         net (fo=1, unplaced)         0.473     8.230    stage[13].ci/x_scaled_b_r[17]_i_2_n_0
+                         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.396     8.626 r  stage[13].ci/x_scaled_b_r_reg[17]_i_1/CO[3]
+                         net (fo=1, unplaced)         0.000     8.626    stage[13].ci/x_scaled_b_r_reg[17]_i_1_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331     8.957 r  stage[13].ci/x_scaled_b_r_reg[21]_i_1/O[3]
+                         net (fo=1, unplaced)         0.000     8.957    x_scaled_b[21]
+                         FDRE                                         r  x_scaled_b_r_reg[21]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  
+                         propagated clock network latency
+                                                      2.079    12.079    
+                         clock pessimism              0.178    12.257    
+                         clock uncertainty           -0.035    12.222    
+                         FDRE (Setup_fdre_C_D)        0.076    12.298    x_scaled_b_r_reg[21]
+  -------------------------------------------------------------------
+                         required time                         12.298    
+                         arrival time                          -8.957    
+  -------------------------------------------------------------------
+                         slack                                  3.341    
+
+Slack (MET) :             3.341ns  (required time - arrival time)
+  Source:                 stage[13].ci/y_reg[15]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            y_scaled_b_r_reg[21]/D
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        6.555ns  (logic 2.935ns (44.775%)  route 3.620ns (55.225%))
+  Logic Levels:           8  (CARRY4=5 LUT5=2 LUT6=1)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.079ns = ( 12.079 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.402ns
+    Clock Pessimism Removal (CPR):    0.178ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         propagated clock network latency
+                                                      2.402     2.402    
+                         FDRE                         0.000     2.402 r  stage[13].ci/y_reg[15]/C
+                         FDRE (Prop_fdre_C_Q)         0.478     2.880 r  stage[13].ci/y_reg[15]/Q
+                         net (fo=50, unplaced)        0.823     3.703    stage[13].ci/cs/z_n_r_reg[15][15]
+                         LUT5 (Prop_lut5_I2_O)        0.295     3.998 r  stage[13].ci/cs/y_next0_carry__15_i_5/O
+                         net (fo=1, unplaced)         0.665     4.663    stage[13].ci_n_112
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.637     5.300 r  cs/y_next0_carry__15/CO[3]
+                         net (fo=1, unplaced)         0.009     5.309    cs/y_next0_carry__15_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.426 r  cs/y_next0_carry__0__12/CO[3]
+                         net (fo=1, unplaced)         0.000     5.426    cs/y_next0_carry__0__12_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256     5.682 r  cs/y_next0_carry__1__12/O[2]
+                         net (fo=29, unplaced)        1.183     6.865    stage[13].ci/y_scaled_b_r_reg[17][1]
+                         LUT6 (Prop_lut6_I3_O)        0.301     7.166 r  stage[13].ci/y_scaled_b_r[21]_i_9/O
+                         net (fo=3, unplaced)         0.467     7.633    stage[13].ci/y_scaled_b_r[21]_i_9_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124     7.757 r  stage[13].ci/y_scaled_b_r[17]_i_2/O
+                         net (fo=1, unplaced)         0.473     8.230    stage[13].ci/y_scaled_b_r[17]_i_2_n_0
+                         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.396     8.626 r  stage[13].ci/y_scaled_b_r_reg[17]_i_1/CO[3]
+                         net (fo=1, unplaced)         0.000     8.626    stage[13].ci/y_scaled_b_r_reg[17]_i_1_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331     8.957 r  stage[13].ci/y_scaled_b_r_reg[21]_i_1/O[3]
+                         net (fo=1, unplaced)         0.000     8.957    y_scaled_b[21]
+                         FDRE                                         r  y_scaled_b_r_reg[21]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  
+                         propagated clock network latency
+                                                      2.079    12.079    
+                         clock pessimism              0.178    12.257    
+                         clock uncertainty           -0.035    12.222    
+                         FDRE (Setup_fdre_C_D)        0.076    12.298    y_scaled_b_r_reg[21]
+  -------------------------------------------------------------------
+                         required time                         12.298    
+                         arrival time                          -8.957    
+  -------------------------------------------------------------------
+                         slack                                  3.341    
+
+Slack (MET) :             3.416ns  (required time - arrival time)
+  Source:                 stage[13].ci/y_reg[15]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            x_scaled_b_r_reg[20]/D
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        6.480ns  (logic 2.860ns (44.136%)  route 3.620ns (55.864%))
+  Logic Levels:           8  (CARRY4=5 LUT5=2 LUT6=1)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.079ns = ( 12.079 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.402ns
+    Clock Pessimism Removal (CPR):    0.178ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         propagated clock network latency
+                                                      2.402     2.402    
+                         FDRE                         0.000     2.402 r  stage[13].ci/y_reg[15]/C
+                         FDRE (Prop_fdre_C_Q)         0.478     2.880 r  stage[13].ci/y_reg[15]/Q
+                         net (fo=50, unplaced)        0.823     3.703    stage[13].ci/cs/z_n_r_reg[15][15]
+                         LUT5 (Prop_lut5_I2_O)        0.295     3.998 r  stage[13].ci/cs/x_next0_carry__15_i_5/O
+                         net (fo=1, unplaced)         0.665     4.663    stage[13].ci_n_100
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.637     5.300 r  cs/x_next0_carry__15/CO[3]
+                         net (fo=1, unplaced)         0.009     5.309    cs/x_next0_carry__15_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.426 r  cs/x_next0_carry__0__12/CO[3]
+                         net (fo=1, unplaced)         0.000     5.426    cs/x_next0_carry__0__12_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256     5.682 r  cs/x_next0_carry__1__12/O[2]
+                         net (fo=29, unplaced)        1.183     6.865    stage[13].ci/x_scaled_b_r_reg[17][1]
+                         LUT6 (Prop_lut6_I3_O)        0.301     7.166 r  stage[13].ci/x_scaled_b_r[21]_i_9/O
+                         net (fo=3, unplaced)         0.467     7.633    stage[13].ci/x_scaled_b_r[21]_i_9_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124     7.757 r  stage[13].ci/x_scaled_b_r[17]_i_2/O
+                         net (fo=1, unplaced)         0.473     8.230    stage[13].ci/x_scaled_b_r[17]_i_2_n_0
+                         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.396     8.626 r  stage[13].ci/x_scaled_b_r_reg[17]_i_1/CO[3]
+                         net (fo=1, unplaced)         0.000     8.626    stage[13].ci/x_scaled_b_r_reg[17]_i_1_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256     8.882 r  stage[13].ci/x_scaled_b_r_reg[21]_i_1/O[2]
+                         net (fo=1, unplaced)         0.000     8.882    x_scaled_b[20]
+                         FDRE                                         r  x_scaled_b_r_reg[20]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  
+                         propagated clock network latency
+                                                      2.079    12.079    
+                         clock pessimism              0.178    12.257    
+                         clock uncertainty           -0.035    12.222    
+                         FDRE (Setup_fdre_C_D)        0.076    12.298    x_scaled_b_r_reg[20]
+  -------------------------------------------------------------------
+                         required time                         12.298    
+                         arrival time                          -8.882    
+  -------------------------------------------------------------------
+                         slack                                  3.416    
+
+Slack (MET) :             3.416ns  (required time - arrival time)
+  Source:                 stage[13].ci/y_reg[15]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            y_scaled_b_r_reg[20]/D
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        6.480ns  (logic 2.860ns (44.136%)  route 3.620ns (55.864%))
+  Logic Levels:           8  (CARRY4=5 LUT5=2 LUT6=1)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.079ns = ( 12.079 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.402ns
+    Clock Pessimism Removal (CPR):    0.178ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         propagated clock network latency
+                                                      2.402     2.402    
+                         FDRE                         0.000     2.402 r  stage[13].ci/y_reg[15]/C
+                         FDRE (Prop_fdre_C_Q)         0.478     2.880 r  stage[13].ci/y_reg[15]/Q
+                         net (fo=50, unplaced)        0.823     3.703    stage[13].ci/cs/z_n_r_reg[15][15]
+                         LUT5 (Prop_lut5_I2_O)        0.295     3.998 r  stage[13].ci/cs/y_next0_carry__15_i_5/O
+                         net (fo=1, unplaced)         0.665     4.663    stage[13].ci_n_112
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.637     5.300 r  cs/y_next0_carry__15/CO[3]
+                         net (fo=1, unplaced)         0.009     5.309    cs/y_next0_carry__15_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.426 r  cs/y_next0_carry__0__12/CO[3]
+                         net (fo=1, unplaced)         0.000     5.426    cs/y_next0_carry__0__12_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256     5.682 r  cs/y_next0_carry__1__12/O[2]
+                         net (fo=29, unplaced)        1.183     6.865    stage[13].ci/y_scaled_b_r_reg[17][1]
+                         LUT6 (Prop_lut6_I3_O)        0.301     7.166 r  stage[13].ci/y_scaled_b_r[21]_i_9/O
+                         net (fo=3, unplaced)         0.467     7.633    stage[13].ci/y_scaled_b_r[21]_i_9_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124     7.757 r  stage[13].ci/y_scaled_b_r[17]_i_2/O
+                         net (fo=1, unplaced)         0.473     8.230    stage[13].ci/y_scaled_b_r[17]_i_2_n_0
+                         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.396     8.626 r  stage[13].ci/y_scaled_b_r_reg[17]_i_1/CO[3]
+                         net (fo=1, unplaced)         0.000     8.626    stage[13].ci/y_scaled_b_r_reg[17]_i_1_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256     8.882 r  stage[13].ci/y_scaled_b_r_reg[21]_i_1/O[2]
+                         net (fo=1, unplaced)         0.000     8.882    y_scaled_b[20]
+                         FDRE                                         r  y_scaled_b_r_reg[20]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  
+                         propagated clock network latency
+                                                      2.079    12.079    
+                         clock pessimism              0.178    12.257    
+                         clock uncertainty           -0.035    12.222    
+                         FDRE (Setup_fdre_C_D)        0.076    12.298    y_scaled_b_r_reg[20]
+  -------------------------------------------------------------------
+                         required time                         12.298    
+                         arrival time                          -8.882    
+  -------------------------------------------------------------------
+                         slack                                  3.416    
+
+Slack (MET) :             3.440ns  (required time - arrival time)
+  Source:                 stage[13].ci/y_reg[15]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            x_scaled_b_r_reg[18]/D
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        6.456ns  (logic 2.836ns (43.928%)  route 3.620ns (56.072%))
+  Logic Levels:           8  (CARRY4=5 LUT5=2 LUT6=1)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.079ns = ( 12.079 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.402ns
+    Clock Pessimism Removal (CPR):    0.178ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         propagated clock network latency
+                                                      2.402     2.402    
+                         FDRE                         0.000     2.402 r  stage[13].ci/y_reg[15]/C
+                         FDRE (Prop_fdre_C_Q)         0.478     2.880 r  stage[13].ci/y_reg[15]/Q
+                         net (fo=50, unplaced)        0.823     3.703    stage[13].ci/cs/z_n_r_reg[15][15]
+                         LUT5 (Prop_lut5_I2_O)        0.295     3.998 r  stage[13].ci/cs/x_next0_carry__15_i_5/O
+                         net (fo=1, unplaced)         0.665     4.663    stage[13].ci_n_100
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.637     5.300 r  cs/x_next0_carry__15/CO[3]
+                         net (fo=1, unplaced)         0.009     5.309    cs/x_next0_carry__15_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.426 r  cs/x_next0_carry__0__12/CO[3]
+                         net (fo=1, unplaced)         0.000     5.426    cs/x_next0_carry__0__12_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256     5.682 r  cs/x_next0_carry__1__12/O[2]
+                         net (fo=29, unplaced)        1.183     6.865    stage[13].ci/x_scaled_b_r_reg[17][1]
+                         LUT6 (Prop_lut6_I3_O)        0.301     7.166 r  stage[13].ci/x_scaled_b_r[21]_i_9/O
+                         net (fo=3, unplaced)         0.467     7.633    stage[13].ci/x_scaled_b_r[21]_i_9_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124     7.757 r  stage[13].ci/x_scaled_b_r[17]_i_2/O
+                         net (fo=1, unplaced)         0.473     8.230    stage[13].ci/x_scaled_b_r[17]_i_2_n_0
+                         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.396     8.626 r  stage[13].ci/x_scaled_b_r_reg[17]_i_1/CO[3]
+                         net (fo=1, unplaced)         0.000     8.626    stage[13].ci/x_scaled_b_r_reg[17]_i_1_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.232     8.858 r  stage[13].ci/x_scaled_b_r_reg[21]_i_1/O[0]
+                         net (fo=1, unplaced)         0.000     8.858    x_scaled_b[18]
+                         FDRE                                         r  x_scaled_b_r_reg[18]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  
+                         propagated clock network latency
+                                                      2.079    12.079    
+                         clock pessimism              0.178    12.257    
+                         clock uncertainty           -0.035    12.222    
+                         FDRE (Setup_fdre_C_D)        0.076    12.298    x_scaled_b_r_reg[18]
+  -------------------------------------------------------------------
+                         required time                         12.298    
+                         arrival time                          -8.858    
+  -------------------------------------------------------------------
+                         slack                                  3.440    
+
+Slack (MET) :             3.440ns  (required time - arrival time)
+  Source:                 stage[13].ci/y_reg[15]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            y_scaled_b_r_reg[18]/D
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        6.456ns  (logic 2.836ns (43.928%)  route 3.620ns (56.072%))
+  Logic Levels:           8  (CARRY4=5 LUT5=2 LUT6=1)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.079ns = ( 12.079 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.402ns
+    Clock Pessimism Removal (CPR):    0.178ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                         propagated clock network latency
+                                                      2.402     2.402    
+                         FDRE                         0.000     2.402 r  stage[13].ci/y_reg[15]/C
+                         FDRE (Prop_fdre_C_Q)         0.478     2.880 r  stage[13].ci/y_reg[15]/Q
+                         net (fo=50, unplaced)        0.823     3.703    stage[13].ci/cs/z_n_r_reg[15][15]
+                         LUT5 (Prop_lut5_I2_O)        0.295     3.998 r  stage[13].ci/cs/y_next0_carry__15_i_5/O
+                         net (fo=1, unplaced)         0.665     4.663    stage[13].ci_n_112
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.637     5.300 r  cs/y_next0_carry__15/CO[3]
+                         net (fo=1, unplaced)         0.009     5.309    cs/y_next0_carry__15_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.426 r  cs/y_next0_carry__0__12/CO[3]
+                         net (fo=1, unplaced)         0.000     5.426    cs/y_next0_carry__0__12_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256     5.682 r  cs/y_next0_carry__1__12/O[2]
+                         net (fo=29, unplaced)        1.183     6.865    stage[13].ci/y_scaled_b_r_reg[17][1]
+                         LUT6 (Prop_lut6_I3_O)        0.301     7.166 r  stage[13].ci/y_scaled_b_r[21]_i_9/O
+                         net (fo=3, unplaced)         0.467     7.633    stage[13].ci/y_scaled_b_r[21]_i_9_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124     7.757 r  stage[13].ci/y_scaled_b_r[17]_i_2/O
+                         net (fo=1, unplaced)         0.473     8.230    stage[13].ci/y_scaled_b_r[17]_i_2_n_0
+                         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.396     8.626 r  stage[13].ci/y_scaled_b_r_reg[17]_i_1/CO[3]
+                         net (fo=1, unplaced)         0.000     8.626    stage[13].ci/y_scaled_b_r_reg[17]_i_1_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.232     8.858 r  stage[13].ci/y_scaled_b_r_reg[21]_i_1/O[0]
+                         net (fo=1, unplaced)         0.000     8.858    y_scaled_b[18]
+                         FDRE                                         r  y_scaled_b_r_reg[18]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  
+                         propagated clock network latency
+                                                      2.079    12.079    
+                         clock pessimism              0.178    12.257    
+                         clock uncertainty           -0.035    12.222    
+                         FDRE (Setup_fdre_C_D)        0.076    12.298    y_scaled_b_r_reg[18]
+  -------------------------------------------------------------------
+                         required time                         12.298    
+                         arrival time                          -8.858    
+  -------------------------------------------------------------------
+                         slack                                  3.440    
+
+
+
+
