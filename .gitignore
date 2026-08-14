@@ -28,8 +28,7 @@ usage_statistics_webtalk.html
 usage_statistics_webtalk.xml
 xsim.dir/
 
-# Local tool config, not part of the project deliverable
-.claude/
+
 
 # Personal planning/notes docs, not part of the public deliverable
 project.md
