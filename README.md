@@ -114,25 +114,31 @@ python hw_pipe_rotate_sweep.py   # pipelined, rotation mode
 python hw_pipe_vectorize_sweep.py # pipelined, vectoring mode
 ```
 
-## Synthesis results
+## Synthesis & implementation results
 
 Target: Xilinx Artix-7 `xc7a35tcpg236-1` (Basys3), Vivado 2024.2,
-100 MHz clock constraint. Full detail and raw reports in
+100 MHz clock constraint. Both designs are fully placed & routed (not just
+synthesized); no bitstream, since that needs board-specific pin constraints
+this project doesn't target. Full detail and raw reports in
 [`synth/results.md`](synth/results.md).
 
-| | Iterative | Pipelined |
-|---|---|---|
-| WNS (setup slack @ 100 MHz) | +2.069 ns | +3.323 ns |
-| Slice LUTs | 491 (2.36%) | 1040 (5.00%) |
-| Slice Registers | 292 (0.70%) | 875 (2.10%) |
-| DSP48 | 0 | 0 |
-| Latency | 17 cycles | 17 cycles |
-| Throughput | 1 result / 17 cycles | 1 result / cycle (steady state) |
+| | Iterative (synth) | Iterative (post-route) | Pipelined (synth) | Pipelined (post-route) |
+|---|---|---|---|---|
+| WNS (setup slack @ 100 MHz) | +2.069 ns | +1.056 ns | +3.323 ns | +2.757 ns |
+| Achievable Fmax | ~126.1 MHz | **~111.8 MHz** | ~149.8 MHz | **~138.1 MHz** |
+| Slice LUTs | 491 | 475 | 1040 | 1012 |
+| Slice Registers | 292 | 292 | 875 | 875 |
+| DSP48 | 0 | 0 | 0 | 0 |
+| Latency | 17 cycles | 17 cycles | 17 cycles | 17 cycles |
+| Throughput | 1 result / 17 cycles | | 1 result / cycle (steady state) | |
 
-Both meet timing with real margin at 100 MHz; the pipelined version's
-shallower per-stage critical path pushes its achievable Fmax meaningfully
-higher, at the cost of ~2-3x more LUTs/FFs — the expected area/throughput
-trade-off from unrolling one shared stage into N physical copies.
+Both meet timing at 100 MHz post-route, not just at the synthesis estimate —
+WNS shrinks once real routing delay is accounted for (synthesis uses
+generic pre-placement delay estimates), but both still hold real margin. The
+pipelined version's shallower per-stage critical path pushes its achievable
+Fmax meaningfully higher both pre- and post-route, at the cost of ~2x more
+LUTs — the expected area/throughput trade-off from unrolling one shared
+stage into N physical copies.
 
 ## Repository layout
 
